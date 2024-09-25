@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <title>Espaço Cultural do 3° Centro de Geoinformação</title>
+        <link rel="shortcut icon" href="ico/favicon.ico">
+        <!-- CSS -->
+        <link href="css/main.css?vs=01" rel="stylesheet">
+        <link href="css/preloader.css?vs=01" rel="stylesheet">
+	<style>#marca-logo{height:6em;right:5px;line-height:3;position:fixed;bottom:1em;}</style>
+        <!-- JS -->
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="js/aframe-ar.js"></script>
+        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body style="margin: 0; overflow: hidden;font-family: monospace;">
+        <!-- preloader -->
+        <div id="preloader">
+            <div class="loder-box">
+                <div class='loader'></br>Carregando...</div>
+            </div>
+        </div>
+        <!--end preloader -->
+	<!-- ID em Execução-->
+	<input type="hidden" id="execucao"/>
+        <a-scene
+	    renderer="antialias: true;
+	    colorManagement: true;
+	    highRefreshRate: true;
+	    foveationLevel: 3;
+	    precision: high;
+	    logarithmicDepthBuffer: true;
+	    sortObjects: true;
+	    physicallyCorrectLights: true;
+	    maxCanvasWidth: 1920;
+	    maxCanvasHeight: 1920;"
+            vr-mode-ui="enabled: false;"
+            loading-screen="enabled: false;"
+            renderer="logarithmicDepthBuffer: true;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+            id="scene"
+            embedded
+            gesture-detector
+        >
+        <!-- Lista de assets -->
+            <a-assets>
+                <a-asset-item id="animated-asset-01" src="assets/3cgeo.gltf?vs=04"></a-asset-item>
+                <a-asset-item id="animated-asset-02" src="assets/3dl.gltf?vs=04" ></a-asset-item>
+		<a-asset-item id="animated-asset-03" src="assets/policoelho_teste13.gltf?vs=04" ></a-asset-item>
+	    	<a-asset-item id="animated-asset-04" src="assets/melomorais_teste3.gltf?vs=04" ></a-asset-item>
+                <audio id="sound-01" src="assets/3cgeo.mp3?vs=04" preload="auto"></audio>
+                <audio id="sound-02" src="assets/3dl.mp3?vs=04" preload="auto"></audio>
+		<audio id="sound-03" src="assets/General Polli Coelho.mpeg?vs=04" preload="auto"></audio>
+	    	<audio id="sound-04" src="assets/General Melo Moraes.mpeg?vs=04" preload="auto"></audio>
+            </a-assets>
+            <!-- Fim Lista de assets -->
+
+            <!-- Lista de marcadores -->
+            <a-marker
+                id="animated-marker-01"
+                type="pattern"
+                preset="custom"
+                url="assets/3cgeo.patt?vs=02"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                soundhandler
+            >
+                <a-entity
+                    sound="src: #sound-01" autoplay="false"
+                    position="0 0.10 0"
+                    rotation="-20 0 0"
+                    heigth="3"
+                    width="1.5"
+                    id="bowser-model"
+                    scale="0.4 0.4 0.4"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset-01"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+            <a-marker
+                id="animated-marker-02"
+                type="pattern"
+                preset="custom"
+                url="assets/3dl.patt?vs=02"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                soundhandler
+            >
+                <a-entity
+                    sound="src: #sound-02" autoplay="false"
+                    position="0 0 0"
+                    rotation="-20 0 0"
+                    heigth="1"
+                    width="1.5"
+                    id="bowser-model"
+                    scale="0.4 0.4 0.4"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset-02"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+	    <a-marker
+                id="animated-marker-03"
+                type="pattern"
+                preset="custom"
+                url="assets/pollicoelho.patt?vs=03"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                soundhandler
+            >
+                <a-entity
+                    sound="src: #sound-03" autoplay="false"
+                    position="0 0 0"
+                    rotation="-40 0 0"
+                    heigth="1"
+                    width="1.5"
+                    id="bowser-model"
+                    scale="0.7 0.7 0.7"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset-03"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+		
+	    <a-marker
+                id="animated-marker-04"
+                type="pattern"
+                preset="custom"
+                url="assets/melomorais.patt?vs=03"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                soundhandler
+            >
+                <a-entity
+                    sound="src: #sound-04" autoplay="false"
+                    position="0 0 0"
+                    rotation="-40 0 0"
+                    heigth="1"
+                    width="1.5"
+                    id="bowser-model"
+                    scale="0.3 0.3 0.3"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset-04"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+			
+            <!-- Fim Lista de marcadores -->
+            <a-entity camera></a-entity>
+        </a-scene>
+        <div id="helpMenu" data-toggle="modal" data-target="#popup">?</div>
+	<div id="marca-logo" ><img src="images/logo.png" style="width:50px;margin-top:15px;"></div>
+        <!--<div id="language">	
+            <a class="language-selector active" data-lang="pt-BR">
+                <img src="images/pt-BR.png" alt="Português">
+            </a>
+            <a class="language-selector" data-lang="en-US">
+                <img src="images/en-US.png" alt="English">
+            </a>
+        </div>-->
+        <div id="popup" class="modal fade popup" role="dialog">
+            <div class="wrapper">
+                <h2 class="popup-title">Instruções</h2>
+                <div class="popup-content">
+                    <p>Seja bem vindo(a)!
+                        Use a câmera do Celular para interagir com nossos personagens, apontando-a para MARCADORES, espalhados pelo salão.
+                    </p>
+                </div>
+                <div class="extra-content"></div>
+                <a class="close" data-dismiss="modal" id="closePopup"> X Fechar</a>
+            </div>
+        </div>
+        <div id="popupnext" class="modal fade popup" role="dialog">
+            <div class="wrapper">
+                <h2 class="popup-title">Saiba mais!</h2>
+                <div class="popup-content">
+                	<h3 id="titulo"></h3>    
+			<p id="sobre"></p>
+			<p id="saibamais"></p>
+                </div>
+                <a class="close" id="closePopuptext" > X Fechar</a>
+            </div>
+        </div>
+        <script>
+            AFRAME.registerComponent('soundhandler', {
+                init: function () {
+                    var elem    = false;
+                    var entity  = document.querySelector('[sound]');
+                    var soundComponent = entity.components.sound;
+                    soundComponent.pauseSound();
+                },
+                tick: function () {
+			
+                    if (document.getElementById('animated-marker-01').object3D.visible == true) {
+                        if(!elem){
+				elem = true;
+				document.getElementById('execucao').value = 'animated-marker-01';
+				var entity  = document.querySelector('[sound]');
+				entity = document.getElementById('animated-marker-01').querySelector('[sound]');
+				var soundComponent = entity.components.sound;
+				soundComponent.playSound();
+				clearTimeout();
+                        }
+                    } else if(document.getElementById('animated-marker-02').object3D.visible == true) {
+                        if(!elem){
+				elem = true;
+				document.getElementById('execucao').value = 'animated-marker-02';
+				entity = document.getElementById('animated-marker-02').querySelector('[sound]');
+				var soundComponent = entity.components.sound;
+				soundComponent.playSound();
+				clearTimeout();
+                        }
+                    } else if(document.getElementById('animated-marker-03').object3D.visible == true) {
+                        if(!elem){
+				elem = true;
+				document.getElementById('execucao').value = 'animated-marker-03';
+				entity = document.getElementById('animated-marker-03').querySelector('[sound]');
+				var soundComponent = entity.components.sound;
+				soundComponent.playSound();
+				clearTimeout();
+                        }
+                    }else if(document.getElementById('animated-marker-04').object3D.visible == true) {
+                        if(!elem){
+				elem = true;
+				document.getElementById('execucao').value = 'animated-marker-04';
+				entity = document.getElementById('animated-marker-04').querySelector('[sound]');
+				var soundComponent = entity.components.sound;
+				soundComponent.playSound();
+				clearTimeout();
+                        }
+                    }else {
+                        elem = false;
+				var id_execucao = document.getElementById('execucao').value;  
+				console.log(id_execucao);
+				if(id_execucao != '') {
+					entity = document.getElementById(id_execucao).querySelector('[sound]');
+					soundComponent = entity.components.sound;
+					soundComponent.pauseSound();
+				}
+                    }
+                }
+            });
+        </script>
+        <script>	
+            $(document).ready(function() {
+               $('#popup').modal('show');
+            });
+	    $('#closePopuptext').click(function() {
+               $('#popupnext').modal('hide'); 
+            });
+        </script>
+        <script>
+            /* ========================================================================= */
+            /*	Preloader
+            /* ========================================================================= */
+
+            $(document).ready(function() {
+
+                setTimeout(function(){$("#preloader").fadeOut("slow")}, 1000);
+
+            });
+        </script>
+    </body>
+</html>
