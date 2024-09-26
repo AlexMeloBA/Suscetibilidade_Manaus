@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <title>Espaço Cultural do 3° Centro de Geoinformação</title>
+        <title>Relevo da Região Metropolitana de Manaus</title>
         <link rel="shortcut icon" href="ico/favicon.ico">
         <!-- CSS -->
         <link href="css/main.css?vs=01" rel="stylesheet">
@@ -50,14 +50,8 @@
         >
         <!-- Lista de assets -->
             <a-assets>
-                <a-asset-item id="animated-asset-01" src="assets/3cgeo.gltf?vs=04"></a-asset-item>
-                <a-asset-item id="animated-asset-02" src="assets/3dl.gltf?vs=04" ></a-asset-item>
-		<a-asset-item id="animated-asset-03" src="assets/policoelho_teste13.gltf?vs=04" ></a-asset-item>
-	    	<a-asset-item id="animated-asset-04" src="assets/melomorais_teste3.gltf?vs=04" ></a-asset-item>
+                <a-asset-item id="animated-asset-01" src="assets/asset.glb?vs=04"></a-asset-item>
                 <audio id="sound-01" src="assets/3cgeo.mp3?vs=04" preload="auto"></audio>
-                <audio id="sound-02" src="assets/3dl.mp3?vs=04" preload="auto"></audio>
-		<audio id="sound-03" src="assets/General Polli Coelho.mpeg?vs=04" preload="auto"></audio>
-	    	<audio id="sound-04" src="assets/General Melo Moraes.mpeg?vs=04" preload="auto"></audio>
             </a-assets>
             <!-- Fim Lista de assets -->
 
@@ -66,7 +60,7 @@
                 id="animated-marker-01"
                 type="pattern"
                 preset="custom"
-                url="assets/3cgeo.patt?vs=02"
+                url="assets/marker.patt?vs=02"
                 raycaster="objects: .clickable"
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
@@ -86,79 +80,10 @@
                     gesture-handler
                 ></a-entity>
             </a-marker>
-            <a-marker
-                id="animated-marker-02"
-                type="pattern"
-                preset="custom"
-                url="assets/3dl.patt?vs=02"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                soundhandler
-            >
-                <a-entity
-                    sound="src: #sound-02" autoplay="false"
-                    position="0 0 0"
-                    rotation="-20 0 0"
-                    heigth="1"
-                    width="1.5"
-                    id="bowser-model"
-                    scale="0.4 0.4 0.4"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset-02"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
-	    <a-marker
-                id="animated-marker-03"
-                type="pattern"
-                preset="custom"
-                url="assets/pollicoelho.patt?vs=03"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                soundhandler
-            >
-                <a-entity
-                    sound="src: #sound-03" autoplay="false"
-                    position="0 0 0"
-                    rotation="-40 0 0"
-                    heigth="1"
-                    width="1.5"
-                    id="bowser-model"
-                    scale="0.7 0.7 0.7"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset-03"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+            
+	    
 		
-	    <a-marker
-                id="animated-marker-04"
-                type="pattern"
-                preset="custom"
-                url="assets/melomorais.patt?vs=03"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                soundhandler
-            >
-                <a-entity
-                    sound="src: #sound-04" autoplay="false"
-                    position="0 0 0"
-                    rotation="-40 0 0"
-                    heigth="1"
-                    width="1.5"
-                    id="bowser-model"
-                    scale="0.3 0.3 0.3"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset-04"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+	    
 			
             <!-- Fim Lista de marcadores -->
             <a-entity camera></a-entity>
@@ -178,7 +103,7 @@
                 <h2 class="popup-title">Instruções</h2>
                 <div class="popup-content">
                     <p>Seja bem vindo(a)!
-                        Use a câmera do Celular para interagir com nossos personagens, apontando-a para MARCADORES, espalhados pelo salão.
+                        Use a câmera do Celular para interagir com o mapa, apontando-a para o QRCODE.
                     </p>
                 </div>
                 <div class="extra-content"></div>
@@ -216,34 +141,7 @@
 				soundComponent.playSound();
 				clearTimeout();
                         }
-                    } else if(document.getElementById('animated-marker-02').object3D.visible == true) {
-                        if(!elem){
-				elem = true;
-				document.getElementById('execucao').value = 'animated-marker-02';
-				entity = document.getElementById('animated-marker-02').querySelector('[sound]');
-				var soundComponent = entity.components.sound;
-				soundComponent.playSound();
-				clearTimeout();
-                        }
-                    } else if(document.getElementById('animated-marker-03').object3D.visible == true) {
-                        if(!elem){
-				elem = true;
-				document.getElementById('execucao').value = 'animated-marker-03';
-				entity = document.getElementById('animated-marker-03').querySelector('[sound]');
-				var soundComponent = entity.components.sound;
-				soundComponent.playSound();
-				clearTimeout();
-                        }
-                    }else if(document.getElementById('animated-marker-04').object3D.visible == true) {
-                        if(!elem){
-				elem = true;
-				document.getElementById('execucao').value = 'animated-marker-04';
-				entity = document.getElementById('animated-marker-04').querySelector('[sound]');
-				var soundComponent = entity.components.sound;
-				soundComponent.playSound();
-				clearTimeout();
-                        }
-                    }else {
+                    } else {
                         elem = false;
 				var id_execucao = document.getElementById('execucao').value;  
 				console.log(id_execucao);
